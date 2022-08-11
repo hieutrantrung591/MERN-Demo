@@ -20,19 +20,19 @@ Content-Type: application/json
 
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ5MjUyY2QzYTg1OWZhMmE0YjAxOWIiLCJpYXQiOjE2NTgzOTc5OTZ9.su-Guv4eeFqoQRsTqpOxIVEwgY4r76jqwFfG9l0j3wg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ5MTk1NjNkODI5ZGYxNjQ4YmNiNzUiLCJpYXQiOjE2NjAyMTEzMTl9.Ae_OYotTb1R8ya0RKrATR4DAm5xp3KwtynLL5wtVaKY
 
 {
-  "title": "React",
-  "description": "REACT",
-  "url": "react.com",
+  "title": "Vue",
+  "description": "VUE",
+  "url": "vue.com",
   "status": "LEARNING"
 }
 
 ###
 
 GET http://localhost:5000/api/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ5MTk1NjNkODI5ZGYxNjQ4YmNiNzUiLCJpYXQiOjE2NTgzOTgzMzV9.jWmxqSjmXeXi3tVPhcxz4zIU9DFfcq8Daolp-ryyiM4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ5MTk1NjNkODI5ZGYxNjQ4YmNiNzUiLCJpYXQiOjE2NjAyMTEzMTl9.Ae_OYotTb1R8ya0RKrATR4DAm5xp3KwtynLL5wtVaKY
 
 ###
 
