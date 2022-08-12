@@ -23,10 +23,10 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ5MTk1NjNkODI5ZGYxNjQ4YmNiNzUiLCJpYXQiOjE2NjAyMTEzMTl9.Ae_OYotTb1R8ya0RKrATR4DAm5xp3KwtynLL5wtVaKY
 
 {
-  "title": "Vue",
-  "description": "VUE",
-  "url": "vue.com",
-  "status": "LEARNING"
+  "title": "Angular",
+  "description": "Angular",
+  "url": "angular.io",
+  "status": "TO LEARN"
 }
 
 ###

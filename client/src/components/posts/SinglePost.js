@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Badge from "react-bootstrap/Badge";
-import Button from "react-bootstrap/Button";
+import ActionButtons from "./ActionButtons";
 
 const SinglePost = ({ post: { _id, status, title, description, url } }) => (
   <Card
@@ -33,7 +33,9 @@ const SinglePost = ({ post: { _id, status, title, description, url } }) => (
               {status}
             </Badge>
           </Col>
-          <Col className='text-right'>Buttons</Col>
+          <Col className='text-right'>
+            <ActionButtons url={url} _id={_id} />
+          </Col>
         </Row>
       </Card.Title>
       <Card.Text>{description}</Card.Text>
