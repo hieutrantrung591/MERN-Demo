@@ -1,7 +1,7 @@
 export const apiUrl =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:5000/api"
-    : "https://protected-beyond-79291.herokuapp.com/api";
+    : "https://aqueous-cove-42734.herokuapp.com/api";
 
 export const LOCAL_STORAGE_TOKEN_NAME = "mern-demo";
 
