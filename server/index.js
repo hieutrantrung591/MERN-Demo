@@ -8,18 +8,20 @@ const postRouter = require('./routes/post');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mern-demo.vypvktx.mongodb.net/mern-demo?retryWrites=true&w=majority`,
+    await mongoose.connect(
+      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mern-demo.vypvktx.mongodb.net/mern-demo?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
-        useUnifiedTopology: true
-      });
+        useUnifiedTopology: true,
+      }
+    );
 
     console.log('MongoDB connected');
   } catch (error) {
     console.log(error.message);
     process.exit(1);
   }
-}
+};
 
 connectDB();
 
@@ -30,8 +32,9 @@ app.use(cors());
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postRouter);
 
-const PORT = 5000;
+const host = '0.0.0.0';
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, 'localhost', () => {
-  console.log(`Server running on port ${PORT}`)
-})
+app.listen(port, host, () => {
+  console.log(`Server running on port ${port}`);
+});

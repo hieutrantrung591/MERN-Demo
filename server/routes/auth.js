@@ -1,21 +1,43 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const argon2 = require("argon2");
-const jwt = require("jsonwebtoken");
+const argon2 = require('argon2');
+const jwt = require('jsonwebtoken');
+const verifyToken = require('../middleware/auth');
 
-const User = require("../models/User");
+const User = require('../models/User');
+
+// @route GET api/auth
+// @desc Check if user if logged in
+// @access Public
+router.get('/', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select('-password');
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'User not found' });
+    }
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+    });
+  }
+});
 
 // @route POST api/auth/register
 // @desc Register user
 // @access Public
-router.post("/register", async (req, res) => {
+router.post('/register', async (req, res) => {
   const { username, password } = req.body;
 
   // Simple validation
   if (!username || !password) {
     return res
       .status(400)
-      .json({ success: false, message: "Missing username or password" });
+      .json({ success: false, message: 'Missing username or password' });
   }
 
   try {
@@ -25,7 +47,7 @@ router.post("/register", async (req, res) => {
     if (user) {
       return res
         .status(400)
-        .json({ success: false, message: "Username already taken" });
+        .json({ success: false, message: 'Username already taken' });
     }
 
     // All good
@@ -41,14 +63,14 @@ router.post("/register", async (req, res) => {
 
     res.json({
       success: true,
-      message: "User created successfully",
+      message: 'User created successfully',
       accessToken,
     });
   } catch (error) {
     console.log(error);
     res.status(500).json({
       success: false,
-      message: "Internal server error",
+      message: 'Internal server error',
     });
   }
 });
@@ -56,14 +78,14 @@ router.post("/register", async (req, res) => {
 // @route POST api/auth/login
 // @desc Login user
 // @access Public
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   // Simple validation
   if (!username || !password) {
     return res
       .status(400)
-      .json({ success: false, message: "Missing username or password" });
+      .json({ success: false, message: 'Missing username or password' });
   }
 
   try {
@@ -72,7 +94,7 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .json({ success: false, message: "Incorrect username or password" });
+        .json({ success: false, message: 'Incorrect username or password' });
     }
 
     // Username found
@@ -80,7 +102,7 @@ router.post("/login", async (req, res) => {
     if (!passwordValid) {
       return res
         .status(400)
-        .json({ success: false, message: "Incorrect username or password" });
+        .json({ success: false, message: 'Incorrect username or password' });
     }
 
     // All good
@@ -91,14 +113,14 @@ router.post("/login", async (req, res) => {
 
     res.json({
       success: true,
-      message: "User logged in successfully",
+      message: 'User logged in successfully',
       accessToken,
     });
   } catch (error) {
     console.log(error);
     res.status(500).json({
       success: false,
-      message: "Internal server error",
+      message: 'Internal server error',
     });
   }
 });
