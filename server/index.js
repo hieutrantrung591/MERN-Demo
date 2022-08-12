@@ -32,8 +32,9 @@ app.use(cors());
 app.use("/api/auth", authRouter);
 app.use("/api/posts", postRouter);
 
-const PORT = process.env.PORT || 5000;
+const host = '0.0.0.0';
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, "localhost", () => {
+app.listen(port, host, "localhost", () => {
   console.log(`Server running on port ${PORT}`);
 });
